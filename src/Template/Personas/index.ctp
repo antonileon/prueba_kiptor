@@ -15,7 +15,6 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('nombres') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('apellidos') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('rut') ?></th>
@@ -30,7 +29,6 @@
             <?php foreach ($personas as $persona): ?>
             <tr>
                 <td><?= $this->Number->format($persona->id) ?></td>
-                <td><?= $persona->has('user') ? $this->Html->link($persona->user->id, ['controller' => 'Users', 'action' => 'view', $persona->user->id]) : '' ?></td>
                 <td><?= h($persona->nombres) ?></td>
                 <td><?= h($persona->apellidos) ?></td>
                 <td><?= h($persona->rut) ?></td>

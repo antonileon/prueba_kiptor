@@ -51,7 +51,7 @@ $cakeDescription = 'Dashboard';
             <li class="heading"><?= __('Menú') ?></li>
             <li><?= $this->Html->link(__('Usuarios'), ['controller' => 'Users', 'action' => 'index']) ?></li>
             <li><?= $this->Html->link(__('Personas'), ['controller'=> 'Personas','action' => 'index']) ?></li>
-            <li><?= $this->Html->link(__('Mascotas'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+            <li><?= $this->Html->link(__('Mascotas'), ['controller' => 'Mascotas', 'action' => 'index']) ?></li>
         </ul>
     </nav>
     <?= $this->Flash->render() ?>

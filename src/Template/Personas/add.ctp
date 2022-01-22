@@ -11,12 +11,11 @@
     <fieldset>
         <legend><?= __('Registrar persona') ?></legend>
         <?php
-            echo $this->Form->control('user_id', ['options' => $users]);
-            echo $this->Form->control('nombres');
-            echo $this->Form->control('apellidos');
-            echo $this->Form->control('rut');
-            echo $this->Form->control('email');
-            echo $this->Form->control('telefono', array('label' => 'Teléfono'));
+            echo $this->Form->control('nombres', array('placeholder'=>'Nombres','required'=>'true'));
+            echo $this->Form->control('apellidos', array('placeholder'=>'Apellidos','required'=>'true'));
+            echo $this->Form->control('rut', array('placeholder'=>'RUT','required'=>'true'));
+            echo $this->Form->control('email', array('placeholder'=>'Email'));
+            echo $this->Form->control('telefono', array('label' => 'Teléfono','placeholder'=>'Teléfono','required'=>'true'));
         ?>
     </fieldset>
     <?= $this->Form->button(__('Registrar')) ?>

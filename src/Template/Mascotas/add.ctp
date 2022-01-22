@@ -4,17 +4,7 @@
  * @var \App\Model\Entity\Mascota $mascota
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Mascotas'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Personas'), ['controller' => 'Personas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Persona'), ['controller' => 'Personas', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Tipo Mascota'), ['controller' => 'TipoMascota', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tipo Mascotum'), ['controller' => 'TipoMascota', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="mascotas form large-9 medium-8 columns content">
+<div class="mascotas form large-12 medium-8 columns content">
     <?= $this->Form->create($mascota) ?>
     <fieldset>
         <legend><?= __('Add Mascota') ?></legend>

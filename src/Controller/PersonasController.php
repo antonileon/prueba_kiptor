@@ -19,9 +19,7 @@ class PersonasController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Users'],
-        ];
+        $this->paginate;
         $personas = $this->paginate($this->Personas);
 
         $this->set(compact('personas'));
@@ -60,8 +58,7 @@ class PersonasController extends AppController
             }
             $this->Flash->error(__('The persona could not be saved. Please, try again.'));
         }
-        $users = $this->Personas->Users->find('list', ['limit' => 200]);
-        $this->set(compact('persona', 'users'));
+        $this->set(compact('persona'));
     }
 
     /**

@@ -4,18 +4,13 @@
  * @var \App\Model\Entity\Mascota[]|\Cake\Collection\CollectionInterface $mascotas
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Mascota'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Personas'), ['controller' => 'Personas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Persona'), ['controller' => 'Personas', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Tipo Mascota'), ['controller' => 'TipoMascota', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tipo Mascotum'), ['controller' => 'TipoMascota', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="mascotas index large-9 medium-8 columns content">
-    <h3><?= __('Mascotas') ?></h3>
+<div class="mascotas index large-12 medium-8 columns content">
+    <h3>
+        <?= __('Mascotas') ?>
+        <span style="float: right;">
+            <?= $this->Html->link(__('Registrar'), ['action' => 'add'], array('class'=>'button')) ?>
+        </span>
+    </h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
