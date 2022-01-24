@@ -4,7 +4,17 @@
  * @var \App\Model\Entity\Mascota[]|\Cake\Collection\CollectionInterface $mascotas
  */
 ?>
-<div class="mascotas index large-12 medium-8 columns content">
+<nav class="large-3 medium-4 columns" id="actions-sidebar">
+    <ul class="side-nav">
+        <li class="heading"><?= __('Menú') ?></li>
+        <li><?= $this->Html->link(__('Usuarios'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Personas'), ['controller'=> 'Personas','action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Mascotas'), ['controller' => 'Mascotas', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Tipo de mascota'), ['controller' => 'TipoMascota', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Cerrar sesión'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
+    </ul>
+</nav>
+<div class="mascotas index large-9 medium-8 columns content">
     <h3>
         <?= __('Mascotas') ?>
         <span style="float: right;">
@@ -30,8 +40,8 @@
             <?php foreach ($mascotas as $mascota): ?>
             <tr>
                 <td><?= $this->Number->format($mascota->id) ?></td>
-                <td><?= $mascota->has('persona') ? $this->Html->link($mascota->persona->id, ['controller' => 'Personas', 'action' => 'view', $mascota->persona->id]) : '' ?></td>
-                <td><?= $mascota->has('tipo_mascotum') ? $this->Html->link($mascota->tipo_mascotum->id, ['controller' => 'TipoMascota', 'action' => 'view', $mascota->tipo_mascotum->id]) : '' ?></td>
+                <td><?= $mascota->has('persona') ? $this->Html->link($mascota->persona->nombres.' '.$mascota->persona->apellidos, ['controller' => 'Personas', 'action' => 'view', $mascota->persona->id]) : '' ?></td>
+                <td><?= $mascota->has('tipo_mascotum') ? $this->Html->link($mascota->tipo_mascotum->tipo, ['controller' => 'TipoMascota', 'action' => 'view', $mascota->tipo_mascotum->id]) : '' ?></td>
                 <td><?= h($mascota->raza) ?></td>
                 <td><?= h($mascota->nombre) ?></td>
                 <td><?= h($mascota->sexo) ?></td>
@@ -39,9 +49,9 @@
                 <td><?= h($mascota->created) ?></td>
                 <td><?= h($mascota->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $mascota->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $mascota->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $mascota->id], ['confirm' => __('Are you sure you want to delete # {0}?', $mascota->id)]) ?>
+                    <?= $this->Html->link(__('Ver'), ['action' => 'view', $mascota->id]) ?>
+                    <?= $this->Html->link(__('Editar'), ['action' => 'edit', $mascota->id]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $mascota->id], ['confirm' => __('¿Estas seguro que deseas eliminar esta mascota? # {0}?', $mascota->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

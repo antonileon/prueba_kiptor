@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+error_reporting(0);
 
 /**
  * Personas Controller
@@ -35,7 +36,7 @@ class PersonasController extends AppController
     public function view($id = null)
     {
         $persona = $this->Personas->get($id, [
-            'contain' => ['Users'],
+            'contain' => [],
         ]);
 
         $this->set('persona', $persona);
@@ -52,11 +53,11 @@ class PersonasController extends AppController
         if ($this->request->is('post')) {
             $persona = $this->Personas->patchEntity($persona, $this->request->getData());
             if ($this->Personas->save($persona)) {
-                $this->Flash->success(__('The persona has been saved.'));
+                $this->Flash->success(__('La persona ha sido guardada con éxito.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The persona could not be saved. Please, try again.'));
+            $this->Flash->error(__('La persona no pudo ser modificada. Por favor, inténtalo de nuevo.'));
         }
         $this->set(compact('persona'));
     }
@@ -76,14 +77,13 @@ class PersonasController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $persona = $this->Personas->patchEntity($persona, $this->request->getData());
             if ($this->Personas->save($persona)) {
-                $this->Flash->success(__('The persona has been saved.'));
+                $this->Flash->success(__('Persona modificada con éxito'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The persona could not be saved. Please, try again.'));
+            $this->Flash->error(__('La persona no pudo ser modificada. Por favor, inténtalo de nuevo.'));
         }
-        $users = $this->Personas->Users->find('list', ['limit' => 200]);
-        $this->set(compact('persona', 'users'));
+        $this->set(compact('persona'));
     }
 
     /**
@@ -98,9 +98,9 @@ class PersonasController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $persona = $this->Personas->get($id);
         if ($this->Personas->delete($persona)) {
-            $this->Flash->success(__('The persona has been deleted.'));
+            $this->Flash->success(__('La persona ha sido eliminada con éxito.'));
         } else {
-            $this->Flash->error(__('The persona could not be deleted. Please, try again.'));
+            $this->Flash->error(__('No se pudo eliminar la persona. Por favor, inténtalo de nuevo.'));
         }
 
         return $this->redirect(['action' => 'index']);

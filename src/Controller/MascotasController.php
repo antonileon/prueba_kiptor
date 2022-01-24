@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+error_reporting(0);
 use App\Controller\AppController;
 
 /**
@@ -54,14 +55,16 @@ class MascotasController extends AppController
         if ($this->request->is('post')) {
             $mascota = $this->Mascotas->patchEntity($mascota, $this->request->getData());
             if ($this->Mascotas->save($mascota)) {
-                $this->Flash->success(__('The mascota has been saved.'));
+                $this->Flash->success(__('La mascota se ha guardado con éxito.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The mascota could not be saved. Please, try again.'));
+            $this->Flash->error(__('La mascota no se pudo modificado. Por favor, inténtalo de nuevo.'));
         }
-        $personas = $this->Mascotas->Personas->find('list', ['limit' => 200]);
-        $tipoMascota = $this->Mascotas->TipoMascota->find('list', ['limit' => 200]);
+        $personas = $this->Mascotas->Personas;
+        $personas = $personas->find();
+        $personas->select(['id','nombres','apellidos']);
+        $tipoMascota = $this->Mascotas->TipoMascota->find()->select(['id','tipo']);
         $this->set(compact('mascota', 'personas', 'tipoMascota'));
     }
 
@@ -80,14 +83,14 @@ class MascotasController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $mascota = $this->Mascotas->patchEntity($mascota, $this->request->getData());
             if ($this->Mascotas->save($mascota)) {
-                $this->Flash->success(__('The mascota has been saved.'));
+                $this->Flash->success(__('La mascota se ha modificado con éxito.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The mascota could not be saved. Please, try again.'));
+            $this->Flash->error(__('La mascota no se pudo modificar. Por favor, inténtalo de nuevo.'));
         }
-        $personas = $this->Mascotas->Personas->find('list', ['limit' => 200]);
-        $tipoMascota = $this->Mascotas->TipoMascota->find('list', ['limit' => 200]);
+        $personas = $this->Mascotas->Personas->find()->select(['id','nombres']);
+        $tipoMascota = $this->Mascotas->TipoMascota->find()->select(['id','tipo']);
         $this->set(compact('mascota', 'personas', 'tipoMascota'));
     }
 
@@ -103,9 +106,9 @@ class MascotasController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $mascota = $this->Mascotas->get($id);
         if ($this->Mascotas->delete($mascota)) {
-            $this->Flash->success(__('The mascota has been deleted.'));
+            $this->Flash->success(__('La mascota ha sido eliminada con éxito.'));
         } else {
-            $this->Flash->error(__('The mascota could not be deleted. Please, try again.'));
+            $this->Flash->error(__('La mascota no se pudo eliminar. Por favor, inténtalo de nuevo.'));
         }
 
         return $this->redirect(['action' => 'index']);

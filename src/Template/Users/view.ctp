@@ -4,7 +4,17 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<div class="users view large-12 medium-8 columns content">
+<nav class="large-3 medium-4 columns" id="actions-sidebar">
+    <ul class="side-nav">
+        <li class="heading"><?= __('Menú') ?></li>
+        <li><?= $this->Html->link(__('Usuarios'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Personas'), ['controller'=> 'Personas','action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Mascotas'), ['controller' => 'Mascotas', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Tipo de mascota'), ['controller' => 'TipoMascota', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Cerrar sesión'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
+    </ul>
+</nav>
+<div class="users view large-9 medium-8 columns content">
     <h3 style="text-transform: uppercase;">
         <?= h($user->nombres) ?>
         <span style="float: right;">

@@ -6,17 +6,23 @@
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Persona'), ['action' => 'edit', $persona->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Persona'), ['action' => 'delete', $persona->id], ['confirm' => __('Are you sure you want to delete # {0}?', $persona->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Personas'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Persona'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
+        <li class="heading"><?= __('Menú') ?></li>
+        <li><?= $this->Html->link(__('Usuarios'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Personas'), ['controller'=> 'Personas','action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Mascotas'), ['controller' => 'Mascotas', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Tipo de mascota'), ['controller' => 'TipoMascota', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Cerrar sesión'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
     </ul>
 </nav>
 <div class="personas view large-9 medium-8 columns content">
-    <h3><?= h($persona->id) ?></h3>
+    <h3>
+        <?= h($persona->nombres) ?>
+        <span style="float: right;">
+            <?= $this->Html->link(__('Lista de personas'), ['action' => 'index'], array('class'=>'button')) ?> 
+            <?= $this->Html->link(__('Editar'), ['action' => 'edit', $persona->id], array('class'=>'button')) ?>
+            <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $persona->id], array('class'=>'button'), ['confirm' => __('Are you sure you want to delete # {0}?', $persona->id)]) ?>
+        </span>    
+    </h3>
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('User') ?></th>

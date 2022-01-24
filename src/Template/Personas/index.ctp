@@ -4,7 +4,17 @@
  * @var \App\Model\Entity\Persona[]|\Cake\Collection\CollectionInterface $personas
  */
 ?>
-<div class="personas index large-12 medium-8 columns content">
+<nav class="large-3 medium-4 columns" id="actions-sidebar">
+    <ul class="side-nav">
+        <li class="heading"><?= __('Menú') ?></li>
+        <li><?= $this->Html->link(__('Usuarios'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Personas'), ['controller'=> 'Personas','action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Mascotas'), ['controller' => 'Mascotas', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('Tipo de mascota'), ['controller' => 'TipoMascota', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('Cerrar sesión'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
+    </ul>
+</nav>
+<div class="personas index large-9 medium-8 columns content">
     <h3>
         <?= __('Personas') ?>
         <span style="float: right;">
@@ -21,7 +31,6 @@
                 <th scope="col"><?= $this->Paginator->sort('email') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('telefono') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -35,11 +44,10 @@
                 <td><?= h($persona->email) ?></td>
                 <td><?= h($persona->telefono) ?></td>
                 <td><?= h($persona->created) ?></td>
-                <td><?= h($persona->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $persona->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $persona->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $persona->id], ['confirm' => __('Are you sure you want to delete # {0}?', $persona->id)]) ?>
+                    <?= $this->Html->link(__('Ver'), ['action' => 'view', $persona->id]) ?>
+                    <?= $this->Html->link(__('Editar'), ['action' => 'edit', $persona->id]) ?>
+                    <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $persona->id], ['confirm' => __('Are you sure you want to delete # {0}?', $persona->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

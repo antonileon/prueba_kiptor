@@ -31,7 +31,8 @@ $cakeDescription = 'Dashboard';
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 </head>
 <body>
     <nav class="top-bar expanded" data-topbar role="navigation">
@@ -40,19 +41,13 @@ $cakeDescription = 'Dashboard';
                 <h1><a href="/">Dashboard</a></h1>
             </li>
         </ul>
+        <?php //if(is_null($this->$request->session()->read('Auth.User.id'))): ?>
         <div class="top-bar-section">
             <ul class="right">
-                <li><?= $this->Html->link(__('Cerrar sesión'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
+                <li style="color: white; margin-top: 6px; margin-right: 10px;"><?php echo $this->Session->read('Auth.User.email'); ?></li>
             </ul>
         </div>
-    </nav>
-    <nav class="large-3 medium-4 columns" id="actions-sidebar">
-        <ul class="side-nav">
-            <li class="heading"><?= __('Menú') ?></li>
-            <li><?= $this->Html->link(__('Usuarios'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-            <li><?= $this->Html->link(__('Personas'), ['controller'=> 'Personas','action' => 'index']) ?></li>
-            <li><?= $this->Html->link(__('Mascotas'), ['controller' => 'Mascotas', 'action' => 'index']) ?></li>
-        </ul>
+        <?php //endif; ?>
     </nav>
     <?= $this->Flash->render() ?>
     <div class="container clearfix">
@@ -60,5 +55,6 @@ $cakeDescription = 'Dashboard';
     </div>
     <footer>
     </footer>
+    <?= $this->fetch('script') ?>
 </body>
 </html>
